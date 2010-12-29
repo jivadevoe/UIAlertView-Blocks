@@ -6,13 +6,13 @@ This is a quickie little category on UIAlertView which enables you to use blocks
 HOW IT WORKS
 ------------
 
-Instead of calling the traditional `-initWithTitle:message:delegate:cancelButtonTitle:otherButtonTitles:` initializer, you call the new initializer: `-initWithTitle:message:cancelButtonItem:otherButtonItems:`.  This works just like the traditional initializer, except instead of using strings for the buttons, it takes instances of UIAlertViewButtonItem's.  This is a class also defined as part of the category which simply encapsulates the button label and the action block to execute when that button is tapped.  The last argument is variadic, just like the traditional initializer, so it must be `nil` terminated.
+Instead of calling the traditional `-initWithTitle:message:delegate:cancelButtonTitle:otherButtonTitles:` initializer, you call the new initializer: `-initWithTitle:message:cancelButtonItem:otherButtonItems:`.  This works just like the traditional initializer, except instead of using strings for the buttons, it takes instances of RIAlertViewButtonItem's.  This is a class also defined as part of the category which simply encapsulates the button label and the action block to execute when that button is tapped.  The last argument is variadic, just like the traditional initializer, so it must be `nil` terminated.
 
 The action blocks are of type AlertViewAction, which is typedef'd to be a block as follows:
 
 	typedef void (^AlertViewAction)();
 
-The UIAlertViewButtonItem class also provides a convenience method which returns an autoreleased item called, conveniently enough, `+item`.
+The RIAlertViewButtonItem class also provides a convenience method which returns an autoreleased item called, conveniently enough, `+item`.
 
 Under the covers, the category takes the button items you pass in, and it stores them as an associated object with the UIAlertView itself.  It then initializes a traditional UIAlertView, setting itself as the delegate.  When the UIAlertView gets the `-alertView:didDismissWithButtonIndex:` delegate method called, it pulls out the button items, looks up the one associated with the tapped button, and executes the block associated with that button.
 
@@ -23,7 +23,7 @@ HOW TO USE IT
 
 Typically, you'll create items that represent the buttons and the actions to take when they are tapped.  For example imagine a dialog box confirming deletion of an item:
 
-	UIAlertViewButtonItem *cancelItem = [UIAlertViewButtonItem item];
+	RIAlertViewButtonItem *cancelItem = [RIAlertViewButtonItem item];
 	cancelItem.label = @"No";
 	cancelItem.action = ^
 	{
@@ -32,7 +32,7 @@ Typically, you'll create items that represent the buttons and the actions to tak
 		// but here, I'm showing a block just to show that you can use one if you want to.
 	};
 
-	UIAlertViewButtonItem *deleteItem = [UIAlertViewButtonItem item];
+	RIAlertViewButtonItem *deleteItem = [RIAlertViewButtonItem item];
 	deleteItem.label = @"Yes";
 	deleteItem.action = ^
 	{
@@ -55,15 +55,6 @@ Once you've created these, you simply initialize your UIAlertView using the init
 Again, this is designed to be fire and forget, so you initialize it, show it, and release it.  It'll take care of cleaning up after itself.
 
 That's it!
-
-WARNING
--------
-
-I use very generic class names here.  It's entirely possible that something like `UIAlertViewButtonItem` *might* be something that will be flagged as a private API when submitting to the App Store.  I have not yet submitted an app with this code, so I can't say for sure.  If anyone gets rejected due to this code, please let me know and I'll definitely change it so it won't be rejectable.
-
-Additionally, I think it's entirely likely that Apple will eventually produce their own code similar to this using blocks.  When they do, it might collide with this code, so you should watch the new releases of the SDK, and when this becomes obsolete, stop using it.
-
-As always, your mileage may vary, IANAL, offer void where prohibited.
 
 LICENSE
 -------

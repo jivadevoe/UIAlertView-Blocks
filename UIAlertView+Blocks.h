@@ -10,7 +10,7 @@
 
 typedef void (^AlertViewAction)();
 
-@interface UIAlertViewButtonItem : NSObject
+@interface RIAlertViewButtonItem : NSObject
 {
     NSString *label;
     AlertViewAction action;
@@ -23,6 +23,6 @@ typedef void (^AlertViewAction)();
 
 @interface UIAlertView (Blocks)
 
--(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(UIAlertViewButtonItem *)inCancelButtonItem otherButtonItems:(UIAlertViewButtonItem *)inOtherButtonItems, ... NS_REQUIRES_NIL_TERMINATION;
+-(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIAlertViewButtonItem *)inCancelButtonItem otherButtonItems:(RIAlertViewButtonItem *)inOtherButtonItems, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end

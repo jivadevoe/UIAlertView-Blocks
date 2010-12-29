@@ -9,7 +9,7 @@
 #import "UIAlertView+Blocks.h"
 #import <objc/runtime.h>
 
-@implementation UIAlertViewButtonItem
+@implementation RIAlertViewButtonItem
 @synthesize label;
 @synthesize action;
 
@@ -22,26 +22,26 @@
 
 @implementation UIAlertView (Blocks)
 
--(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(UIAlertViewButtonItem *)inCancelButtonItem otherButtonItems:(UIAlertViewButtonItem *)inOtherButtonItems, ... 
+-(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIAlertViewButtonItem *)inCancelButtonItem otherButtonItems:(RIAlertViewButtonItem *)inOtherButtonItems, ... 
 {
     if((self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.label otherButtonTitles:nil]))
     {
         NSMutableArray *buttonsArray = [NSMutableArray array];
         
-        UIAlertViewButtonItem *eachItem;
+        RIAlertViewButtonItem *eachItem;
         va_list argumentList;
         if (inOtherButtonItems)                     
         {                                  
             [buttonsArray addObject: inOtherButtonItems];
             va_start(argumentList, inOtherButtonItems);       
-            while((eachItem = va_arg(argumentList, UIAlertViewButtonItem *))) 
+            while((eachItem = va_arg(argumentList, RIAlertViewButtonItem *))) 
             {
                 [buttonsArray addObject: eachItem];            
             }
             va_end(argumentList);
         }    
         
-        for(UIAlertViewButtonItem *item in buttonsArray)
+        for(RIAlertViewButtonItem *item in buttonsArray)
         {
             [self addButtonWithTitle:item.label];
         }
@@ -60,7 +60,7 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     NSArray *buttonsArray = objc_getAssociatedObject(self, @"com.random-ideas.BUTTONS");
-    UIAlertViewButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
+    RIAlertViewButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
     if(item.action)
         item.action();
     objc_setAssociatedObject(self, @"com.random-ideas.BUTTONS", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
