@@ -24,23 +24,23 @@
 
 -(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(UIAlertViewButtonItem *)inCancelButtonItem otherButtonItems:(UIAlertViewButtonItem *)inOtherButtonItems, ... 
 {
-    NSMutableArray *buttonsArray = [NSMutableArray array];
-    
-    UIAlertViewButtonItem *eachItem;
-    va_list argumentList;
-    if (inOtherButtonItems)                     
-    {                                  
-        [buttonsArray addObject: inOtherButtonItems];
-        va_start(argumentList, inOtherButtonItems);       
-        while((eachItem = va_arg(argumentList, UIAlertViewButtonItem *))) 
-        {
-            [buttonsArray addObject: eachItem];            
-        }
-        va_end(argumentList);
-    }    
-    
     if((self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.label otherButtonTitles:nil]))
     {
+        NSMutableArray *buttonsArray = [NSMutableArray array];
+        
+        UIAlertViewButtonItem *eachItem;
+        va_list argumentList;
+        if (inOtherButtonItems)                     
+        {                                  
+            [buttonsArray addObject: inOtherButtonItems];
+            va_start(argumentList, inOtherButtonItems);       
+            while((eachItem = va_arg(argumentList, UIAlertViewButtonItem *))) 
+            {
+                [buttonsArray addObject: eachItem];            
+            }
+            va_end(argumentList);
+        }    
+        
         for(UIAlertViewButtonItem *item in buttonsArray)
         {
             [self addButtonWithTitle:item.label];
