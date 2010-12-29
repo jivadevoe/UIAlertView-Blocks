@@ -3,6 +3,8 @@ README
 
 This is a quickie little category on UIAlertView which enables you to use blocks to handle the button selection instead of implementing a delegate.
 
+*IMPORTANT* See the "Warning" section at the end of this README for a warning about the App Store and this code!
+
 HOW IT WORKS
 ------------
 
@@ -56,7 +58,32 @@ Again, this is designed to be fire and forget, so you initialize it, show it, an
 
 That's it!
 
+WARNING
+-------
+
+I use very generic class names here.  It's entirely possible that something like `UIAlertViewButtonItem` *might* be something that will be flagged as a private API when submitting to the App Store.  I have not yet submitted an app with this code, so I can't say for sure.  If anyone gets rejected due to this code, please let me know and I'll definitely change it so it won't be rejectable.
+
+Additionally, I think it's entirely likely that Apple will eventually produce their own code similar to this using blocks.  When they do, it might collide with this code, so you should watch the new releases of the SDK, and when this becomes obsolete, stop using it.
+
 LICENSE
 -------
 
-This is 
+Copyright (C) 2010 by Random Ideas, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
