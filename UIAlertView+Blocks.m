@@ -64,7 +64,7 @@
     if(item.action)
         item.action();
     objc_setAssociatedObject(self, @"com.random-ideas.BUTTONS", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self release];
+    [self release]; // and then release yourself!
 }
 
 @end
