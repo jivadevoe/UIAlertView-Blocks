@@ -24,7 +24,7 @@ HOW TO USE IT
 Typically, you'll create items that represent the buttons and the actions to take when they are tapped.  For example imagine a dialog box confirming deletion of an item:
 
 	UIAlertViewButtonItem *cancelItem = [UIAlertViewButtonItem item];
-	cancelItem.name = @"No";
+	cancelItem.label = @"No";
 	cancelItem.action = ^
 	{
 		// this is the code that will be executed when the user taps "No"
@@ -33,7 +33,7 @@ Typically, you'll create items that represent the buttons and the actions to tak
 	};
 
 	UIAlertViewButtonItem *deleteItem = [UIAlertViewButtonItem item];
-	deleteItem.name = @"Yes";
+	deleteItem.label = @"Yes";
 	deleteItem.action = ^
 	{
 		// this is the code that will be executed when the user taps "Yes"
@@ -41,12 +41,22 @@ Typically, you'll create items that represent the buttons and the actions to tak
 		[context deleteObject:theObject];
 	};
 
+The label property on the button items is the text that will be displayed in the button.
+
 Once you've created these, you simply initialize your UIAlertView using the initializer, passing your button items accordingly:
 
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete This Item?" message:@"Are you sure you want to delete this really important thing?" cancelButtonItem:cancelItem otherButtonItems:deleteItem, nil];
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete This Item?" 
+	                                                    message:@"Are you sure you want to delete this really important thing?" 
+											   cancelButtonItem:cancelItem 
+											   otherButtonItems:deleteItem, nil];
 	[alertView show];
 	[alertView release];
 
 Again, this is designed to be fire and forget, so you initialize it, show it, and release it.  It'll take care of cleaning up after itself.
 
 That's it!
+
+LICENSE
+-------
+
+This is 

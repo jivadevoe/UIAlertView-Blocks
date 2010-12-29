@@ -12,10 +12,10 @@ typedef void (^AlertViewAction)();
 
 @interface UIAlertViewButtonItem : NSObject
 {
-    NSString *name;
+    NSString *label;
     AlertViewAction action;
 }
-@property (retain, nonatomic)  NSString *name;
+@property (retain, nonatomic)  NSString *label;
 @property (copy, nonatomic) AlertViewAction action;
 +(id)item;
 @end

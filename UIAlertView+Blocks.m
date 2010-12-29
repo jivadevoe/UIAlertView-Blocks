@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 
 @implementation UIAlertViewButtonItem
-@synthesize name;
+@synthesize label;
 @synthesize action;
 
 +(id)item
@@ -39,11 +39,11 @@
         va_end(argumentList);
     }    
     
-    if((self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.name otherButtonTitles:nil]))
+    if((self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.label otherButtonTitles:nil]))
     {
         for(UIAlertViewButtonItem *item in buttonsArray)
         {
-            [self addButtonWithTitle:item.name];
+            [self addButtonWithTitle:item.label];
         }
         
         if(inCancelButtonItem)
@@ -64,7 +64,7 @@
     if(item.action)
         item.action();
     objc_setAssociatedObject(self, @"com.random-ideas.BUTTONS", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self release]; // and then release yourself!
+    [self release]; // and release yourself!
 }
 
 @end
