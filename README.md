@@ -65,6 +65,8 @@ I use very generic class names here.  It's entirely possible that something like
 
 Additionally, I think it's entirely likely that Apple will eventually produce their own code similar to this using blocks.  When they do, it might collide with this code, so you should watch the new releases of the SDK, and when this becomes obsolete, stop using it.
 
+As always, your mileage may vary, IANAL, offer void where prohibited.
+
 LICENSE
 -------
 
