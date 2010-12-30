@@ -18,12 +18,11 @@
     return [[self new] autorelease];
 }
 
-+(id)itemWithLabel:(NSString *)labelText
++(id)itemWithLabel:(NSString *)inLabel
 {
-	id newItem = [self item];
-	[newItem setLabel:labelText];
-	
-	return newItem;
+    id newItem = [self item];
+    [newItem setLabel:inLabel];
+    return newItem;
 }
 
 @end
