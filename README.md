@@ -3,8 +3,6 @@ README
 
 This is a quickie little category on UIAlertView which enables you to use blocks to handle the button selection instead of implementing a delegate.
 
-This fork adds a convenience method to quickly create no-op buttons, useful for the "cancel" button where you don't need it to do anything special.
-
 HOW IT WORKS
 ------------
 
@@ -14,11 +12,11 @@ The action blocks are of type AlertViewAction, which is typedef'd to be a block 
 
 	typedef void (^AlertViewAction)();
 
-The RIAlertViewButtonItem class also provides a convenience method which returns an autoreleased item called, conveniently enough, `+item`. Another convenience method called `+itemWithLabel:` allows you to quickly create an item that has no action.
+The RIAlertViewButtonItem class also provides a convenience method which returns an autoreleased item called, conveniently enough, `+item`. If you don't specify an action, the button will still show, but won't do anything when tapped other than dismiss the dialog. This is pretty common with cancel buttons, so another convenience method called `+itemWithLabel:` allows you to quickly create an item that has no action.
 
 Under the covers, the category takes the button items you pass in, and it stores them as an associated object with the UIAlertView itself.  It then initializes a traditional UIAlertView, setting itself as the delegate.  When the UIAlertView gets the `-alertView:didDismissWithButtonIndex:` delegate method called, it pulls out the button items, looks up the one associated with the tapped button, and executes the block associated with that button.
 
-One little bit of weirdness you may be curious about is this:  In the initializer, it retains itself.  The reason it does this is because the expectation is that you'll basically fire and forget this.  I didn't want to have to hold onto an instance variable for this guy or anything, and I wasn't sure if the didDismiss method was called before or after the alertview was removed from the view hierarchy and thus, possibly deallocated.  Since the UIAlertView itself is it's own delegate, if it gets deallocated before the didDismiss method is called, it would crash, and we don't want that.  By retaining self, we don't need to worry about it.  The only concern then is that we have to remember to release self in the delegate method, which we do.  If anyone can confirm or deny that this code is required, I'd welcome the discussion.  Does retaining self make me feel dirty?  Yes.  And naughty... oh yeah... and naughty... ;)
+One little bit of weirdness you may be curious about is this:  In the initializer, it retains itself.  The reason it does this is because the expectation is that you'll basically fire and forget this.  I didn't want to have to hold onto an instance variable for this guy or anything, and I wasn't sure if the didDismiss method was called before or after the alertview was removed from the view hierarchy and thus, possibly deallocated.  Since the UIAlertView itself is it's own delegate, if it gets deallocated before the didDismiss method is called, it would crash, and we don't want that.  By retaining self, we don't need to worry about it.  The only concern then is that we have to remember to release self in the delegate method, which we do.  If anyone can confirm or deny that this code is required, I'd welcome the discussion.  Does retaining self make me feel dirty?  Yes.  And naughty... oh yeah... so naughty... ;)
 
 HOW TO USE IT
 -------------
@@ -50,15 +48,6 @@ Once you've created these, you simply initialize your UIAlertView using the init
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete This Item?" 
 	                                                    message:@"Are you sure you want to delete this really important thing?" 
 											   cancelButtonItem:cancelItem 
-											   otherButtonItems:deleteItem, nil];
-	[alertView show];
-	[alertView release];
-
-To quickly create a cancel button, or another other no-op buttons, you can create the alert as such:
-
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete This Item?" 
-	                                                    message:@"Are you sure you want to delete this really important thing?" 
-											   cancelButtonItem:[RIAlertViewButtonItem itemWithLabel:@"No Action"] 
 											   otherButtonItems:deleteItem, nil];
 	[alertView show];
 	[alertView release];
