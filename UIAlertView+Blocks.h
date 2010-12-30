@@ -18,6 +18,7 @@ typedef void (^AlertViewAction)();
 @property (retain, nonatomic)  NSString *label;
 @property (copy, nonatomic) AlertViewAction action;
 +(id)item;
++(id)itemWithLabel:(NSString *)labelText;
 @end
 
 

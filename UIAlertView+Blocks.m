@@ -18,6 +18,14 @@
     return [[self new] autorelease];
 }
 
++(id)itemWithLabel:(NSString *)labelText
+{
+	id newItem = [self item];
+	[newItem setLabel:labelText];
+	
+	return newItem;
+}
+
 @end
 
 @implementation UIAlertView (Blocks)
