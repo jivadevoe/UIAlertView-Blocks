@@ -7,22 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef void (^AlertViewAction)();
-
-@interface UIAlertViewButtonItem : NSObject
-{
-    NSString *label;
-    AlertViewAction action;
-}
-@property (retain, nonatomic)  NSString *label;
-@property (copy, nonatomic) AlertViewAction action;
-+(id)item;
-@end
-
+#import "RIButtonItem.h"
 
 @interface UIAlertView (Blocks)
 
--(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(UIAlertViewButtonItem *)inCancelButtonItem otherButtonItems:(UIAlertViewButtonItem *)inOtherButtonItems, ... NS_REQUIRES_NIL_TERMINATION;
+-(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end
