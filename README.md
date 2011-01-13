@@ -1,18 +1,20 @@
 README
 ======
 
-This is a quickie little category on UIAlertView which enables you to use blocks to handle the button selection instead of implementing a delegate.
+This is a quickie pair of categories on UIAlertView and UIActionSheet which enables you to use blocks to handle the button selection instead of implementing a delegate.
 
 HOW IT WORKS
 ------------
 
-Instead of calling the traditional `-initWithTitle:message:delegate:cancelButtonTitle:otherButtonTitles:` initializer, you call the new initializer: `-initWithTitle:message:cancelButtonItem:otherButtonItems:`.  This works just like the traditional initializer, except instead of using strings for the buttons, it takes instances of RIAlertViewButtonItem's.  This is a class also defined as part of the category which simply encapsulates the button label and the action block to execute when that button is tapped.  The last argument is variadic, just like the traditional initializer, so it must be `nil` terminated.
+Using UIAlertView as the main example here, instead of calling the traditional `-initWithTitle:message:delegate:cancelButtonTitle:otherButtonTitles:` initializer, you call the new initializer: `-initWithTitle:message:cancelButtonItem:otherButtonItems:`.  This works just like the traditional initializer, except instead of using strings for the buttons, it takes instances of RIButtonItem's.  This is a class also defined as part of this framework which simply encapsulates the button label and the action block to execute when that button is tapped.  The last argument to the initializer is variadic, just like the traditional initializer, so it must be `nil` terminated.
 
-The action blocks are of type AlertViewAction, which is typedef'd to be a block as follows:
+The action blocks are of type RISimpleAction, which is typedef'd to be a block as follows:
 
-	typedef void (^AlertViewAction)();
+	typedef void (^RISimpleAction)();
+	
+This is just a simple block which takes no arguments and returns nothing.
 
-The RIAlertViewButtonItem class also provides a convenience method which returns an autoreleased item called, conveniently enough, `+item`. If you don't specify an action, the button will still show, but won't do anything when tapped other than dismiss the dialog. This is pretty common with cancel buttons, so another convenience method called `+itemWithLabel:` allows you to quickly create an item that has no action.
+The RIButtonItem class also provides a convenience method which returns an autoreleased item called, conveniently enough, `+item`. If you don't specify an action, the button will still show, but won't do anything when tapped other than dismiss the dialog. This is pretty common with cancel buttons, so another convenience method called `+itemWithLabel:` allows you to quickly create an item that has no action.
 
 Under the covers, the category takes the button items you pass in, and it stores them as an associated object with the UIAlertView itself.  It then initializes a traditional UIAlertView, setting itself as the delegate.  When the UIAlertView gets the `-alertView:didDismissWithButtonIndex:` delegate method called, it pulls out the button items, looks up the one associated with the tapped button, and executes the block associated with that button.
 
@@ -23,7 +25,7 @@ HOW TO USE IT
 
 Typically, you'll create items that represent the buttons and the actions to take when they are tapped.  For example imagine a dialog box confirming deletion of an item:
 
-	RIAlertViewButtonItem *cancelItem = [RIAlertViewButtonItem item];
+	RIButtonItem *cancelItem = [RIButtonItem item];
 	cancelItem.label = @"No";
 	cancelItem.action = ^
 	{
@@ -32,7 +34,7 @@ Typically, you'll create items that represent the buttons and the actions to tak
 		// but here, I'm showing a block just to show that you can use one if you want to.
 	};
 
-	RIAlertViewButtonItem *deleteItem = [RIAlertViewButtonItem item];
+	RIButtonItem *deleteItem = [RIButtonItem item];
 	deleteItem.label = @"Yes";
 	deleteItem.action = ^
 	{
@@ -56,10 +58,12 @@ Again, this is designed to be fire and forget, so you initialize it, show it, an
 
 That's it!
 
+The UIActionSheet category works virtually the same as the UIAlertView.  Just check out the header for the initializer you need to use.  It's very straightforward.
+
 LICENSE
 -------
 
-Copyright (C) 2010 by Random Ideas, LLC
+Copyright (C) 2011 by Random Ideas, LLC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
