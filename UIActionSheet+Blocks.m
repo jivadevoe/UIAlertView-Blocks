@@ -57,6 +57,38 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
     return self;
 }
 
+- (void)addButtonItems:(NSArray *)inOtherButtonItems withCancelItem:(RIButtonItem *)inCancelButtonItem andDestructiveItem:(RIButtonItem *)inDestructiveItem {
+	NSMutableArray *buttonsArray = [NSMutableArray array];
+	
+	RIButtonItem *eachItem;
+	if (inOtherButtonItems)
+	{
+		for (eachItem in inOtherButtonItems) {
+			[buttonsArray addObject: eachItem];
+		}
+	}
+	
+	for(RIButtonItem *item in buttonsArray)
+	{
+		[self addButtonWithTitle:item.label];
+	}
+	
+	if(inDestructiveItem)
+	{
+		[buttonsArray addObject:inDestructiveItem];
+		NSInteger destIndex = [self addButtonWithTitle:inDestructiveItem.label];
+		[self setDestructiveButtonIndex:destIndex];
+	}
+	if(inCancelButtonItem)
+	{
+		[buttonsArray addObject:inCancelButtonItem];
+		NSInteger cancelIndex = [self addButtonWithTitle:inCancelButtonItem.label];
+		[self setCancelButtonIndex:cancelIndex];
+	}
+	
+	objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
