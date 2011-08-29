@@ -57,7 +57,7 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 	
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
     RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
