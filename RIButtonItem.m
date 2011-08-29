@@ -26,7 +26,10 @@
 
 -(void)dealloc
 {
-    self.action = nil;
+    [action release];
+    action = nil;
+    [label release];
+    label = nil;
     [super dealloc];
 }
 
