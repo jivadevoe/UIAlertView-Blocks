@@ -24,5 +24,14 @@
     return newItem;
 }
 
+-(void)dealloc
+{
+    [action release];
+    action = nil;
+    [label release];
+    label = nil;
+    [super dealloc];
+}
+
 @end
 
