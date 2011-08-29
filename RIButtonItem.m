@@ -24,5 +24,11 @@
     return newItem;
 }
 
+-(void)dealloc
+{
+    self.action = nil;
+    [super dealloc];
+}
+
 @end
 
