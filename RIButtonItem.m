@@ -33,5 +33,21 @@
     [super dealloc];
 }
 
+-(BOOL)isDestructive {
+    return itemFlags.isDestructive;
+}
+
+-(void)setIsDestructive:(BOOL)isDestructive {
+    itemFlags.isDestructive = isDestructive;
+}
+
+-(BOOL)isCancel {
+    return itemFlags.isCancel;
+}
+
+-(void)setIsCancel:(BOOL)isCancel {
+    itemFlags.isCancel = isCancel;
+}
+
 @end
 

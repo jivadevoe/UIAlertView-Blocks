@@ -14,9 +14,16 @@ typedef void (^RISimpleAction)();
 {
     NSString *label;
     RISimpleAction action;
+    
+    struct {
+        unsigned int isCancel:1;
+        unsigned int isDestructive:1;
+    } itemFlags;
 }
 @property (retain, nonatomic) NSString *label;
 @property (copy, nonatomic) RISimpleAction action;
+@property (nonatomic) BOOL isDestructive;
+@property (nonatomic) BOOL isCancel;
 +(id)item;
 +(id)itemWithLabel:(NSString *)inLabel;
 @end
