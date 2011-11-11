@@ -15,7 +15,7 @@ typedef void (^RISimpleAction)();
     NSString *label;
     RISimpleAction action;
 }
-@property (retain, nonatomic) NSString *label;
+@property (strong, nonatomic) NSString *label;
 @property (copy, nonatomic) RISimpleAction action;
 +(id)item;
 +(id)itemWithLabel:(NSString *)inLabel;
