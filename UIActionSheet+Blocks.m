@@ -50,16 +50,15 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
             [self setCancelButtonIndex:cancelIndex];
         }
         
-        objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
-        [self retain]; // keep yourself around!
     }
     return self;
 }
 
 - (NSInteger)addButtonItem:(RIButtonItem *)item
 {	
-    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);	
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);	
 	
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
 	[buttonsArray addObject:item];
@@ -69,12 +68,11 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+    NSArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
     RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
     if(item.action)
         item.action();
-    objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self release]; // and release yourself!
+    objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 
