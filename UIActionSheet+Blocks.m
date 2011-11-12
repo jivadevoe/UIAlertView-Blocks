@@ -68,10 +68,15 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    NSArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
-    RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
-    if(item.action)
-        item.action();
+    // Action sheets pass back -1 when they're cleared for some reason other than a button being 
+    // pressed.
+    if (buttonIndex >= 0)
+    {
+        NSArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
+        RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
+        if(item.action)
+            item.action();
+    }
     objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
