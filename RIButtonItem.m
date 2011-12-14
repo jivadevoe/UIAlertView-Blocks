@@ -14,7 +14,7 @@
 
 +(id)item
 {
-    return [[self new] autorelease];
+    return [self new];
 }
 
 +(id)itemWithLabel:(NSString *)inLabel
@@ -26,11 +26,8 @@
 
 -(void)dealloc
 {
-    [action release];
     action = nil;
-    [label release];
     label = nil;
-    [super dealloc];
 }
 
 @end

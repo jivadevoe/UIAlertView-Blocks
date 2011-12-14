@@ -9,7 +9,7 @@
 #import "UIAlertView+Blocks.h"
 #import <objc/runtime.h>
 
-static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
+static CFStringRef RI_BUTTON_ASS_KEY = (CFStringRef)@"com.random-ideas.BUTTONS";
 
 @implementation UIAlertView (Blocks)
 
@@ -43,7 +43,6 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
         objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
         [self setDelegate:self];
-        [self retain]; // keep yourself around!
     }
     return self;
 }
@@ -65,7 +64,6 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
     if(item.action)
         item.action();
     objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self release]; // and release yourself!
 }
 
 @end
