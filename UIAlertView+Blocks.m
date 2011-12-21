@@ -67,6 +67,7 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
             item.action();
         });
     objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setDelegate: nil];
     [self release]; // and release yourself!
 }
 
