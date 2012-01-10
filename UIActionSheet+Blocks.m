@@ -76,11 +76,15 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
-    RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
-    if(item.action)
-        item.action();
-    objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (buttonIndex != -1)
+    {
+        NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+        RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
+        if(item.action)
+            item.action();
+        objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    
     [self release]; // and release yourself!
 }
 
