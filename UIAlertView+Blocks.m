@@ -53,9 +53,13 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
     NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);	
 	
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
+    
+    if (item.isCancel) {
+        [self setCancelButtonIndex:buttonIndex];
+    }
 	[buttonsArray addObject:item];
 	
-	return buttonIndex;
+    return buttonIndex;
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex

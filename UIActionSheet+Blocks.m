@@ -60,11 +60,18 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 - (NSInteger)addButtonItem:(RIButtonItem *)item
 {	
     NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);	
-	
+
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
+    
+    if (item.isDestructive) {
+        [self setDestructiveButtonIndex:buttonIndex];
+    }
+    if (item.isCancel) {
+        [self setCancelButtonIndex:buttonIndex];
+    }
 	[buttonsArray addObject:item];
 	
-	return buttonIndex;
+    return buttonIndex;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
