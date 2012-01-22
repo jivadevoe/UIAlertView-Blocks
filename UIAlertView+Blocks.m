@@ -51,9 +51,19 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 - (NSInteger)addButtonItem:(RIButtonItem *)item
 {	
     NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);	
+    
+    if (buttonsArray == nil) {
+    	buttonsArray = [NSMutableArray array];
+    	objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 	
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
 	[buttonsArray addObject:item];
+	
+	if ([self delegate] == nil) {
+		[self setDelegate:self];
+		[self retain];
+	}
 	
 	return buttonIndex;
 }
