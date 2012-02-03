@@ -15,8 +15,7 @@
 
 - (NSInteger)addButtonItem:(RIButtonItem *)item;
 
-/** This block is called when the action sheet is dismssed for any reason other than a button
-    press. If the user taps outside the view, for example. 
+/** This block is called when the action sheet is dismssed for any reason.
  */
 @property (copy, nonatomic) RISimpleAction dismissalAction;
 

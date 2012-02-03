@@ -89,10 +89,9 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
         if(item.action)
             item.action();
     }
-    else if (self.dismissalAction)
-    {
-        self.dismissalAction();
-    }
+    
+    if (self.dismissalAction) self.dismissalAction();
+    
     objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
 }
