@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 
 static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
+static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
 
 @implementation UIActionSheet (Blocks)
 
@@ -67,19 +68,36 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 	return buttonIndex;
 }
 
+- (void)setDismissalAction:(RISimpleAction)dismissalAction
+{
+    objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
+    objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, dismissalAction, OBJC_ASSOCIATION_COPY);
+}
+
+- (RISimpleAction)dismissalAction
+{
+    return objc_getAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY);
+}
+
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex != -1)
+    // Action sheets pass back -1 when they're cleared for some reason other than a button being 
+    // pressed.
+    if (buttonIndex >= 0)
     {
-        NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+        NSArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
         RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
         if(item.action)
             item.action();
-        objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
-    
-    [self release]; // and release yourself!
+    else if (self.dismissalAction)
+    {
+        self.dismissalAction();
+    }
+    objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
+	
+	[self release];
 }
-
 
 @end
