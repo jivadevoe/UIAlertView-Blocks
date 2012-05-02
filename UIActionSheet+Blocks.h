@@ -6,7 +6,7 @@
 //  Copyright 2011 Random Ideas, LLC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "RIButtonItem.h"
 
 @interface UIActionSheet (Blocks) <UIActionSheetDelegate>
