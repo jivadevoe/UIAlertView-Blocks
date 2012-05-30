@@ -17,6 +17,6 @@
 
 /** This block is called when the action sheet is dismssed for any reason.
  */
-@property (copy, nonatomic) RISimpleAction dismissalAction;
+@property (copy, nonatomic) void(^dismissalAction)();
 
 @end

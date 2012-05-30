@@ -67,13 +67,13 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
 	return buttonIndex;
 }
 
-- (void)setDismissalAction:(RISimpleAction)dismissalAction
+- (void)setDismissalAction:(void(^)())dismissalAction
 {
     objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
     objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, dismissalAction, OBJC_ASSOCIATION_COPY);
 }
 
-- (RISimpleAction)dismissalAction
+- (void(^)())dismissalAction
 {
     return objc_getAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY);
 }
