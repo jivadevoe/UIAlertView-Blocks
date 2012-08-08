@@ -17,5 +17,11 @@
 @property (copy, nonatomic) void (^action)();
 +(id)item;
 +(id)itemWithLabel:(NSString *)inLabel;
++(id)itemWithLabel:(NSString *)label andAction:(void(^)())action;
+
+- (id)initWithLabel:(NSString *)label;
+- (id)initWithLabel:(NSString *)label andAction:(void(^)())action;
+
+
 @end
 
