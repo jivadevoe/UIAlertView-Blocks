@@ -39,8 +39,12 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
         
         if(inCancelButtonItem)
             [buttonsArray insertObject:inCancelButtonItem atIndex:0];
-        
+
+#if __has_feature(objc_arc)
         objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+#else
+        objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+#endif
         
         [self setDelegate:self];
     }
@@ -49,8 +53,12 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 
 - (NSInteger)addButtonItem:(RIButtonItem *)item
 {	
-    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);	
-	
+#if __has_feature(objc_arc)
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
+#else
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+#endif
+
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
 	[buttonsArray addObject:item];
 	
@@ -62,13 +70,21 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
     // If the button index is -1 it means we were dismissed with no selection
     if (buttonIndex >= 0)
     {
+#if __has_feature(objc_arc)
         NSArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
+#else
+        NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+#endif
         RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
         if(item.action)
             item.action();
     }
     
+#if __has_feature(objc_arc)
     objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+#else
+    objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+#endif
 }
 
 @end
