@@ -14,7 +14,7 @@
 
 +(id)item
 {
-    return [self new];
+    return [[self new] autorelease];
 }
 
 +(id)itemWithLabel:(NSString *)inLabel
