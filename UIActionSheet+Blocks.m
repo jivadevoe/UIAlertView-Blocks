@@ -14,30 +14,17 @@ static const void *RI_DISMISSAL_ACTION_KEY = &RI_DISMISSAL_ACTION_KEY;
 
 @implementation UIActionSheet (Blocks)
 
--(id)initWithTitle:(NSString *)inTitle cancelButtonItem:(RIButtonItem *)inCancelButtonItem destructiveButtonItem:(RIButtonItem *)inDestructiveItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ...
-{
+-(id)initWithTitle:(NSString *)inTitle cancelButtonItem:(RIButtonItem *)inCancelButtonItem destructiveButtonItem:(RIButtonItem *)inDestructiveItem otherButtonItemsArray:(NSArray *)inOtherButtonItems {
     if((self = [self initWithTitle:inTitle delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil]))
     {
         NSMutableArray *buttonsArray = [NSMutableArray array];
-        
-        RIButtonItem *eachItem;
-        va_list argumentList;
-        if (inOtherButtonItems)
-        {
-            [buttonsArray addObject: inOtherButtonItems];
-            va_start(argumentList, inOtherButtonItems);
-            while((eachItem = va_arg(argumentList, RIButtonItem *)))
-            {
-                [buttonsArray addObject: eachItem];
-            }
-            va_end(argumentList);
-        }
-        
+        [buttonsArray addObjectsFromArray:inOtherButtonItems];
+
         for(RIButtonItem *item in buttonsArray)
         {
             [self addButtonWithTitle:item.label];
         }
-        
+
         if(inDestructiveItem)
         {
             [buttonsArray addObject:inDestructiveItem];
@@ -52,9 +39,29 @@ static const void *RI_DISMISSAL_ACTION_KEY = &RI_DISMISSAL_ACTION_KEY;
         }
         
         objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        
     }
+
     return self;
+}
+
+-(id)initWithTitle:(NSString *)inTitle cancelButtonItem:(RIButtonItem *)inCancelButtonItem destructiveButtonItem:(RIButtonItem *)inDestructiveItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ...
+{
+    NSMutableArray *buttonsArray = [NSMutableArray array];
+
+    RIButtonItem *eachItem;
+    va_list argumentList;
+    if (inOtherButtonItems)
+    {
+        [buttonsArray addObject: inOtherButtonItems];
+        va_start(argumentList, inOtherButtonItems);
+        while((eachItem = va_arg(argumentList, RIButtonItem *)))
+        {
+            [buttonsArray addObject: eachItem];
+        }
+        va_end(argumentList);
+    }
+
+    return [self initWithTitle:inTitle cancelButtonItem:inCancelButtonItem destructiveButtonItem:inDestructiveItem otherButtonItemsArray:buttonsArray];
 }
 
 - (NSInteger)addButtonItem:(RIButtonItem *)item
