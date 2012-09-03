@@ -13,38 +13,47 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 
 @implementation UIAlertView (Blocks)
 
--(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ... 
-{
+-(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItemsArray:(NSArray *)inOtherButtonItemsArray {
     if((self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.label otherButtonTitles:nil]))
     {
         NSMutableArray *buttonsArray = [NSMutableArray array];
-        
-        RIButtonItem *eachItem;
-        va_list argumentList;
-        if (inOtherButtonItems)                     
-        {                                  
-            [buttonsArray addObject: inOtherButtonItems];
-            va_start(argumentList, inOtherButtonItems);       
-            while((eachItem = va_arg(argumentList, RIButtonItem *))) 
-            {
-                [buttonsArray addObject: eachItem];            
-            }
-            va_end(argumentList);
-        }    
-        
+        [buttonsArray addObjectsFromArray:inOtherButtonItemsArray];
+
         for(RIButtonItem *item in buttonsArray)
         {
             [self addButtonWithTitle:item.label];
         }
-        
+
         if(inCancelButtonItem)
             [buttonsArray insertObject:inCancelButtonItem atIndex:0];
-        
+
         objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        
+
         [self setDelegate:self];
     }
     return self;
+
+}
+
+-(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ... 
+{
+    NSMutableArray *buttonsArray = [NSMutableArray array];
+
+    RIButtonItem *eachItem;
+    va_list argumentList;
+    if (inOtherButtonItems)
+    {
+        [buttonsArray addObject: inOtherButtonItems];
+        va_start(argumentList, inOtherButtonItems);
+        while((eachItem = va_arg(argumentList, RIButtonItem *)))
+        {
+            [buttonsArray addObject: eachItem];
+        }
+        va_end(argumentList);
+    }
+
+    return [self initWithTitle:inTitle message:inMessage cancelButtonItem:inCancelButtonItem otherButtonItemsArray:buttonsArray];
+
 }
 
 - (NSInteger)addButtonItem:(RIButtonItem *)item
