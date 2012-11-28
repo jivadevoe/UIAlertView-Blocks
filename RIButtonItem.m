@@ -19,7 +19,7 @@
 
 +(id)itemWithLabel:(NSString *)inLabel
 {
-    id newItem = [self item];
+    RIButtonItem *newItem = [self item];
     [newItem setLabel:inLabel];
     return newItem;
 }
