@@ -13,9 +13,15 @@
     NSString *label;
     void (^action)();
 }
-@property (retain, nonatomic) NSString *label;
+@property (strong, nonatomic) NSString *label;
 @property (copy, nonatomic) void (^action)();
 +(id)item;
 +(id)itemWithLabel:(NSString *)inLabel;
++(id)itemWithLabel:(NSString *)label andAction:(void(^)())action;
+
+- (id)initWithLabel:(NSString *)label;
+- (id)initWithLabel:(NSString *)label andAction:(void(^)())action;
+
+
 @end
 

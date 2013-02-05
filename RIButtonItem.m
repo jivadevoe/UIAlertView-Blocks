@@ -9,6 +9,7 @@
 #import "RIButtonItem.h"
 
 @implementation RIButtonItem
+
 @synthesize label;
 @synthesize action;
 
@@ -23,6 +24,29 @@
     [newItem setLabel:inLabel];
     return newItem;
 }
+
++(id)itemWithLabel:(NSString *)label andAction:(void(^)())action
+{
+    RIButtonItem *newItem = (RIButtonItem *)[self item];
+    newItem.label = label;
+    newItem.action = action;
+    return newItem;
+}
+
+- (id)initWithLabel:(NSString *)label {
+    return [self initWithLabel:nil andAction:nil];
+}
+
+- (id)initWithLabel:(NSString *)_label andAction:(void(^)())_action
+{
+    self = [super init];
+    if (self) {
+        self.label  = label;
+        self.action = action;
+    }
+    return self;
+}
+
 
 @end
 

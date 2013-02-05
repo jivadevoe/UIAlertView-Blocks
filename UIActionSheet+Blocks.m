@@ -50,16 +50,23 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
             NSInteger cancelIndex = [self addButtonWithTitle:inCancelButtonItem.label];
             [self setCancelButtonIndex:cancelIndex];
         }
-        
+
+#if __has_feature(objc_arc)
         objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        
+#else
+        objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+#endif
     }
     return self;
 }
 
 - (NSInteger)addButtonItem:(RIButtonItem *)item
 {	
-    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);	
+#if __has_feature(objc_arc)
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
+#else
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+#endif
 	
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
 	[buttonsArray addObject:item];
@@ -69,13 +76,22 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
 
 - (void)setDismissalAction:(void(^)())dismissalAction
 {
+#if __has_feature(objc_arc)
     objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
     objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, dismissalAction, OBJC_ASSOCIATION_COPY);
+#else
+    objc_setAssociatedObject(self, RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
+    objc_setAssociatedObject(self, RI_DISMISSAL_ACTION_KEY, dismissalAction, OBJC_ASSOCIATION_COPY);
+#endif
 }
 
 - (void(^)())dismissalAction
 {
+#if __has_feature(objc_arc)
     return objc_getAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY);
+#else
+    return objc_getAssociatedObject(self, RI_DISMISSAL_ACTION_KEY);
+#endif
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -84,7 +100,11 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
     // pressed.
     if (buttonIndex >= 0)
     {
+#if __has_feature(objc_arc)
         NSArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
+#else
+        NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+#endif
         RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
         if(item.action)
             item.action();
@@ -92,8 +112,13 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
     
     if (self.dismissalAction) self.dismissalAction();
     
+#if __has_feature(objc_arc)
     objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
+#else
+    objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
+#endif
 }
 
 @end
