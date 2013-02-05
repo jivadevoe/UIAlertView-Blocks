@@ -47,11 +47,6 @@
     return self;
 }
 
--(void)dealloc {
-    self.action = nil;
-    self.label = nil;
-    [super dealloc];
-}
 
 @end
 
