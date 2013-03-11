@@ -15,7 +15,7 @@ static const void *RI_BUTTON_ASS_KEY = &RI_BUTTON_ASS_KEY;
 
 -(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItemsArray:(NSArray *)inOtherButtonItemsArray
 {
-    self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.label otherButtonTitles:nil]
+    self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.label otherButtonTitles:nil];
 
     if (self) {
         NSMutableArray *buttonsArray = [NSMutableArray array];
