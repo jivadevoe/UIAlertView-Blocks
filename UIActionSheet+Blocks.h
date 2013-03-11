@@ -21,8 +21,4 @@
 
 - (NSInteger)addButtonItem:(RIButtonItem *)item;
 
-/** This block is called when the action sheet is dismssed for any reason.
- */
-@property (copy, nonatomic) void(^dismissalAction)();
-
 @end
