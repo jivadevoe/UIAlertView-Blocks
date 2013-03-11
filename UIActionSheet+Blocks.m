@@ -66,7 +66,7 @@ static const void *RI_DISMISSAL_ACTION_KEY = &RI_DISMISSAL_ACTION_KEY;
 
 - (NSInteger)addButtonItem:(RIButtonItem *)item
 {	
-    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);	
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);	
 	
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
 	[buttonsArray addObject:item];
@@ -91,7 +91,7 @@ static const void *RI_DISMISSAL_ACTION_KEY = &RI_DISMISSAL_ACTION_KEY;
     // pressed.
     if (buttonIndex >= 0)
     {
-        NSArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
+        NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
         RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
         if(item.action)
             item.action();
