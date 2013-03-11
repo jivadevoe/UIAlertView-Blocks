@@ -56,6 +56,16 @@ Once you've created these, you simply initialize your UIAlertView using the init
 
 Again, this is designed to be fire and forget, so you initialize it, show it, and release it.  It'll take care of cleaning up after itself.
 
+You can also add a RIButtonItem to the UIAlertView after initialization, just like you normally would:
+
+    [alertView addButtonItem:deleteItem];
+  
+This is useful if building an UIAlertView, or UIActionSheet dynamically from an Array:
+
+    for (RIButtonItem *item in buttonItemArray) {
+      [alertView addButtonItem:item];
+    }
+
 That's it!
 
 The UIActionSheet category works virtually the same as the UIAlertView.  Just check out the header for the initializer you need to use.  It's very straightforward.
