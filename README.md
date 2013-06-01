@@ -11,7 +11,7 @@ Using UIAlertView as the main example here, instead of calling the traditional `
 The action blocks are of type RISimpleAction, which is typedef'd to be a block as follows:
 
 	typedef void (^RISimpleAction)();
-	
+
 This is just a simple block which takes no arguments and returns nothing.
 
 The RIButtonItem class also provides a convenience method which returns an autoreleased item called, conveniently enough, `+item`. If you don't specify an action, the button will still show, but won't do anything when tapped other than dismiss the dialog. This is pretty common with cancel buttons, so another convenience method called `+itemWithLabel:` allows you to quickly create an item that has no action.
@@ -25,41 +25,46 @@ HOW TO USE IT
 
 Typically, you'll create items that represent the buttons and the actions to take when they are tapped.  For example imagine a dialog box confirming deletion of an item:
 
-	RIButtonItem *cancelItem = [RIButtonItem item];
-	cancelItem.label = @"No";
-	cancelItem.action = ^
-	{
+	RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:@"No" action:^{
 		// this is the code that will be executed when the user taps "No"
 		// this is optional... if you leave the action as nil, it won't do anything
 		// but here, I'm showing a block just to show that you can use one if you want to.
-	};
+	}];
 
-	RIButtonItem *deleteItem = [RIButtonItem item];
-	deleteItem.label = @"Yes";
-	deleteItem.action = ^
-	{
+	RIButtonItem *deleteItem = [RIButtonItem itemWithLabel:@"Yes" action:^{
 		// this is the code that will be executed when the user taps "Yes"
 		// delete the object in question...
 		[context deleteObject:theObject];
-	};
+	}];
 
 The label property on the button items is the text that will be displayed in the button.
 
 Once you've created these, you simply initialize your UIAlertView using the initializer, passing your button items accordingly:
 
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete This Item?" 
-	                                                    message:@"Are you sure you want to delete this really important thing?" 
-											   cancelButtonItem:cancelItem 
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete This Item?"
+	                                                    message:@"Are you sure you want to delete this really important thing?"
+											   cancelButtonItem:cancelItem
 											   otherButtonItems:deleteItem, nil];
 	[alertView show];
-	[alertView release];
+
+Alternatively you can also use a single line to create buttons and declare the alert view
+
+	[[[UIAlertView alloc] initWithTitle:@"Delete This Item?"
+	                            message:@"Are you sure you want to delete this really important thing?"
+		               cancelButtonItem:[RIButtonItem itemWithLabel:@"Yes"" action:^{
+		                                  // Handle "Cancel"
+		                                }]
+				       otherButtonItems:[RIButtonItem itemWithLabel:@"Delete"" action:^{
+		                                   // Handle "Delete"
+				                        }], nil] show];
+
 
 Again, this is designed to be fire and forget, so you initialize it, show it, and release it.  It'll take care of cleaning up after itself.
 
 You can also add a RIButtonItem to the UIAlertView after initialization, just like you normally would:
 
     [alertView addButtonItem:deleteItem];
-  
+
 This is useful if building an UIAlertView, or UIActionSheet dynamically from an Array:
 
     for (RIButtonItem *item in buttonItemArray) {
