@@ -1,0 +1,325 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE789EE4177B62DC001E4F32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE789EE3177B62DC001E4F32 /* UIKit.framework */; };
+		BE789EE6177B62DC001E4F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE789EE5177B62DC001E4F32 /* Foundation.framework */; };
+		BE789EE8177B62DC001E4F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE789EE7177B62DC001E4F32 /* CoreGraphics.framework */; };
+		BE789EF0177B62DC001E4F32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE789EEF177B62DC001E4F32 /* main.m */; };
+		BE789EF4177B62DC001E4F32 /* AVPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE789EF3177B62DC001E4F32 /* AVPAppDelegate.m */; };
+		BE789EF6177B62DC001E4F32 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BE789EF5177B62DC001E4F32 /* Default.png */; };
+		BE789EF8177B62DC001E4F32 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE789EF7177B62DC001E4F32 /* Default@2x.png */; };
+		BE789EFA177B62DC001E4F32 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE789EF9177B62DC001E4F32 /* Default-568h@2x.png */; };
+		BE789F02177B631E001E4F32 /* AVPRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE789F01177B631E001E4F32 /* AVPRootViewController.m */; };
+		BE789F06177B64DC001E4F32 /* AVPRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE789F05177B64DC001E4F32 /* AVPRootView.m */; };
+		BE789F11177B69D4001E4F32 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BE789F0A177B69D4001E4F32 /* README.md */; };
+		BE789F12177B69D4001E4F32 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BE789F0C177B69D4001E4F32 /* RIButtonItem.m */; };
+		BE789F13177B69D4001E4F32 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BE789F0E177B69D4001E4F32 /* UIActionSheet+Blocks.m */; };
+		BE789F14177B69D4001E4F32 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BE789F10177B69D4001E4F32 /* UIAlertView+Blocks.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BE789EE0177B62DC001E4F32 /* AlertViewBlocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlertViewBlocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE789EE3177B62DC001E4F32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BE789EE5177B62DC001E4F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BE789EE7177B62DC001E4F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BE789EEF177B62DC001E4F32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = support/main.m; sourceTree = "<group>"; };
+		BE789EF1177B62DC001E4F32 /* AlertViewBlocks-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AlertViewBlocks-Prefix.pch"; path = "support/AlertViewBlocks-Prefix.pch"; sourceTree = "<group>"; };
+		BE789EF2177B62DC001E4F32 /* AVPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPAppDelegate.h; sourceTree = "<group>"; };
+		BE789EF3177B62DC001E4F32 /* AVPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVPAppDelegate.m; sourceTree = "<group>"; };
+		BE789EF5177B62DC001E4F32 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = resources/Default.png; sourceTree = "<group>"; };
+		BE789EF7177B62DC001E4F32 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "resources/Default@2x.png"; sourceTree = "<group>"; };
+		BE789EF9177B62DC001E4F32 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "resources/Default-568h@2x.png"; sourceTree = "<group>"; };
+		BE789F00177B631E001E4F32 /* AVPRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPRootViewController.h; sourceTree = "<group>"; };
+		BE789F01177B631E001E4F32 /* AVPRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPRootViewController.m; sourceTree = "<group>"; };
+		BE789F04177B64DC001E4F32 /* AVPRootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPRootView.h; sourceTree = "<group>"; };
+		BE789F05177B64DC001E4F32 /* AVPRootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPRootView.m; sourceTree = "<group>"; };
+		BE789F07177B6917001E4F32 /* AlertViewBlocks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AlertViewBlocks-Info.plist"; path = "support/AlertViewBlocks-Info.plist"; sourceTree = "<group>"; };
+		BE789F0A177B69D4001E4F32 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		BE789F0B177B69D4001E4F32 /* RIButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		BE789F0C177B69D4001E4F32 /* RIButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		BE789F0D177B69D4001E4F32 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		BE789F0E177B69D4001E4F32 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		BE789F0F177B69D4001E4F32 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		BE789F10177B69D4001E4F32 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE789EDD177B62DC001E4F32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE789EE4177B62DC001E4F32 /* UIKit.framework in Frameworks */,
+				BE789EE6177B62DC001E4F32 /* Foundation.framework in Frameworks */,
+				BE789EE8177B62DC001E4F32 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE789ED7177B62DC001E4F32 = {
+			isa = PBXGroup;
+			children = (
+				BE789EE9177B62DC001E4F32 /* AlertViewBlocks */,
+				BE789F09177B69BF001E4F32 /* UIAlertView-Blocks */,
+				BE789EE2177B62DC001E4F32 /* Frameworks */,
+				BE789EE1177B62DC001E4F32 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE789EE1177B62DC001E4F32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE789EE0177B62DC001E4F32 /* AlertViewBlocks.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE789EE2177B62DC001E4F32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE789EE3177B62DC001E4F32 /* UIKit.framework */,
+				BE789EE5177B62DC001E4F32 /* Foundation.framework */,
+				BE789EE7177B62DC001E4F32 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE789EE9177B62DC001E4F32 /* AlertViewBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				BE789EF2177B62DC001E4F32 /* AVPAppDelegate.h */,
+				BE789EF3177B62DC001E4F32 /* AVPAppDelegate.m */,
+				BE789F04177B64DC001E4F32 /* AVPRootView.h */,
+				BE789F05177B64DC001E4F32 /* AVPRootView.m */,
+				BE789F00177B631E001E4F32 /* AVPRootViewController.h */,
+				BE789F01177B631E001E4F32 /* AVPRootViewController.m */,
+				BE789F03177B637E001E4F32 /* Resources */,
+				BE789EEA177B62DC001E4F32 /* Supporting Files */,
+			);
+			path = AlertViewBlocks;
+			sourceTree = "<group>";
+		};
+		BE789EEA177B62DC001E4F32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE789F07177B6917001E4F32 /* AlertViewBlocks-Info.plist */,
+				BE789EEF177B62DC001E4F32 /* main.m */,
+				BE789EF1177B62DC001E4F32 /* AlertViewBlocks-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE789F03177B637E001E4F32 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE789EF5177B62DC001E4F32 /* Default.png */,
+				BE789EF7177B62DC001E4F32 /* Default@2x.png */,
+				BE789EF9177B62DC001E4F32 /* Default-568h@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BE789F09177B69BF001E4F32 /* UIAlertView-Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				BE789F0A177B69D4001E4F32 /* README.md */,
+				BE789F0B177B69D4001E4F32 /* RIButtonItem.h */,
+				BE789F0C177B69D4001E4F32 /* RIButtonItem.m */,
+				BE789F0D177B69D4001E4F32 /* UIActionSheet+Blocks.h */,
+				BE789F0E177B69D4001E4F32 /* UIActionSheet+Blocks.m */,
+				BE789F0F177B69D4001E4F32 /* UIAlertView+Blocks.h */,
+				BE789F10177B69D4001E4F32 /* UIAlertView+Blocks.m */,
+			);
+			name = "UIAlertView-Blocks";
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE789EDF177B62DC001E4F32 /* AlertViewBlocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE789EFD177B62DC001E4F32 /* Build configuration list for PBXNativeTarget "AlertViewBlocks" */;
+			buildPhases = (
+				BE789EDC177B62DC001E4F32 /* Sources */,
+				BE789EDD177B62DC001E4F32 /* Frameworks */,
+				BE789EDE177B62DC001E4F32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlertViewBlocks;
+			productName = AlertViewBlocks;
+			productReference = BE789EE0177B62DC001E4F32 /* AlertViewBlocks.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE789ED8177B62DC001E4F32 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AVP;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "UIAlertView-Blocks";
+			};
+			buildConfigurationList = BE789EDB177B62DC001E4F32 /* Build configuration list for PBXProject "AlertViewBlocks" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BE789ED7177B62DC001E4F32;
+			productRefGroup = BE789EE1177B62DC001E4F32 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE789EDF177B62DC001E4F32 /* AlertViewBlocks */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE789EDE177B62DC001E4F32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE789EF6177B62DC001E4F32 /* Default.png in Resources */,
+				BE789EF8177B62DC001E4F32 /* Default@2x.png in Resources */,
+				BE789EFA177B62DC001E4F32 /* Default-568h@2x.png in Resources */,
+				BE789F11177B69D4001E4F32 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE789EDC177B62DC001E4F32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE789EF0177B62DC001E4F32 /* main.m in Sources */,
+				BE789EF4177B62DC001E4F32 /* AVPAppDelegate.m in Sources */,
+				BE789F02177B631E001E4F32 /* AVPRootViewController.m in Sources */,
+				BE789F06177B64DC001E4F32 /* AVPRootView.m in Sources */,
+				BE789F12177B69D4001E4F32 /* RIButtonItem.m in Sources */,
+				BE789F13177B69D4001E4F32 /* UIActionSheet+Blocks.m in Sources */,
+				BE789F14177B69D4001E4F32 /* UIAlertView+Blocks.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BE789EFB177B62DC001E4F32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BE789EFC177B62DC001E4F32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE789EFE177B62DC001E4F32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AlertViewBlocks/support/AlertViewBlocks-Prefix.pch";
+				INFOPLIST_FILE = "AlertViewBlocks/support/AlertViewBlocks-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BE789EFF177B62DC001E4F32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AlertViewBlocks/support/AlertViewBlocks-Prefix.pch";
+				INFOPLIST_FILE = "AlertViewBlocks/support/AlertViewBlocks-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE789EDB177B62DC001E4F32 /* Build configuration list for PBXProject "AlertViewBlocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE789EFB177B62DC001E4F32 /* Debug */,
+				BE789EFC177B62DC001E4F32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE789EFD177B62DC001E4F32 /* Build configuration list for PBXNativeTarget "AlertViewBlocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE789EFE177B62DC001E4F32 /* Debug */,
+				BE789EFF177B62DC001E4F32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE789ED8177B62DC001E4F32 /* Project object */;
+}
