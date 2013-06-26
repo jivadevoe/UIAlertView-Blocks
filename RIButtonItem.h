@@ -9,12 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface RIButtonItem : NSObject
-{
-    NSString *label;
-    void (^action)();
-}
-@property (retain, nonatomic) NSString *label;
-@property (copy, nonatomic) void (^action)();
+@property (nonatomic, retain) NSString *label;
+@property (nonatomic, copy) void (^actionBlock)();
 +(id)item;
 +(id)itemWithLabel:(NSString *)inLabel;
 +(id)itemWithLabel:(NSString *)inLabel action:(void(^)(void))action;
