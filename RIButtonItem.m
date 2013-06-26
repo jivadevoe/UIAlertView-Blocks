@@ -9,8 +9,6 @@
 #import "RIButtonItem.h"
 
 @implementation RIButtonItem
-@synthesize label;
-@synthesize action;
 
 +(id)item
 {
@@ -27,7 +25,7 @@
 +(id)itemWithLabel:(NSString *)inLabel action:(void(^)(void))action
 {
   id newItem = [self itemWithLabel:inLabel];
-  [newItem setAction:action];
+  [newItem setActionBlock:action];
   return newItem;
 }
 
