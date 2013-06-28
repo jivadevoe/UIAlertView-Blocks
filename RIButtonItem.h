@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^RISimpleAction)();
+
 @interface RIButtonItem : NSObject
 {
     NSString *label;
