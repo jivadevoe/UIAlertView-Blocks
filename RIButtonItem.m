@@ -24,7 +24,7 @@
     return newItem;
 }
 
-+(id)itemWithLabel:(NSString *)inLabel action:(void(^)(void))action
++(id)itemWithLabel:(NSString *)inLabel action:(RIButtonItemAction)action
 {
   id newItem = [self itemWithLabel:inLabel];
   [newItem setAction:action];
