@@ -51,10 +51,10 @@ Alternatively you can also use a single line to create buttons and declare the a
 
 	[[[UIAlertView alloc] initWithTitle:@"Delete This Item?"
 	                            message:@"Are you sure you want to delete this really important thing?"
-		               cancelButtonItem:[RIButtonItem itemWithLabel:@"Yes"" action:^{
+		               cancelButtonItem:[RIButtonItem itemWithLabel:@"Yes" action:^{
 		                                  // Handle "Cancel"
 		                                }]
-				       otherButtonItems:[RIButtonItem itemWithLabel:@"Delete"" action:^{
+				       otherButtonItems:[RIButtonItem itemWithLabel:@"Delete" action:^{
 		                                   // Handle "Delete"
 				                        }], nil] show];
 
