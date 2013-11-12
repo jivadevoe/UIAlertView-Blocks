@@ -51,10 +51,10 @@ Alternatively you can also use a single line to create buttons and declare the a
 
 	[[[UIAlertView alloc] initWithTitle:@"Delete This Item?"
 	                            message:@"Are you sure you want to delete this really important thing?"
-		               cancelButtonItem:[RIButtonItem itemWithLabel:@"Yes"" action:^{
+		               cancelButtonItem:[RIButtonItem itemWithLabel:@"Yes" action:^{
 		                                  // Handle "Cancel"
 		                                }]
-				       otherButtonItems:[RIButtonItem itemWithLabel:@"Delete"" action:^{
+				       otherButtonItems:[RIButtonItem itemWithLabel:@"Delete" action:^{
 		                                   // Handle "Delete"
 				                        }], nil] show];
 
@@ -110,7 +110,9 @@ copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+all copies or substantial portions of the Software source code. Permission 
+is hereby granted to reproduce the Software in binary form by compiling it
+into your own projects without this attribution requirement.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
