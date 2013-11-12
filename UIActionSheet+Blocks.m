@@ -14,6 +14,14 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
 
 @implementation UIActionSheet (Blocks)
 
+-(id)initWithTitle:(NSString *)inTitle
+{
+	return [self initWithTitle:inTitle
+			  cancelButtonItem:nil
+		 destructiveButtonItem:nil
+			  otherButtonItems:nil];
+}
+	
 -(id)initWithTitle:(NSString *)inTitle cancelButtonItem:(RIButtonItem *)inCancelButtonItem destructiveButtonItem:(RIButtonItem *)inDestructiveItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ...
 {
     if((self = [self initWithTitle:inTitle delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil]))
@@ -66,7 +74,32 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
 	
 	return buttonIndex;
 }
-
+	
+- (NSInteger)addButtonWithTitle:(NSString *)title
+						   type:(UIActionSheetButtonType)buttonType
+						 action:(void(^)(void))action
+{
+	RIButtonItem *button =
+	[RIButtonItem itemWithLabel:title action:action];
+	
+	NSInteger index = [self addButtonItem:button];
+	
+	switch (buttonType) {
+		case UIActionSheetButtonTypeCancel:
+		[self setCancelButtonIndex:index];
+		break;
+		
+		case UIActionSheetButtonTypeDestructive:
+		[self setDestructiveButtonIndex:index];
+		break;
+		
+		default:
+		break;
+	}
+	
+	return index;
+}
+	
 - (void)setDismissalAction:(void(^)())dismissalAction
 {
     objc_setAssociatedObject(self, (__bridge const void *)RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);

@@ -75,6 +75,28 @@ That's it!
 
 The UIActionSheet category works virtually the same as the UIAlertView.  Just check out the header for the initializer you need to use.  It's very straightforward.
 
+If you prefer not to create your `RIButton`s separately, you can initialize an empty action sheet with just a title using `initWithTitle:`, then add buttons to it with `addButtonWithTitle:type:action:` method, which also allows you to specify which button should be destructive and which should be cancel.
+
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Replace existing item?"];
+    
+    [actionSheet addButtonWithTitle:@"Replace"
+                               type:UIActionSheetButtonTypeDestructive
+                             action:^{
+							    // Replace, mark as destructive
+					         }];
+					         
+    [actionSheet addButtonWithTitle:@"Keep Both"
+                               type:UIActionSheetButtonTypeNormal
+                             action:^{
+							    // Keep both, mark as normal
+					         }];
+					         
+    [actionSheet addButtonWithTitle:@"Cancel"
+                               type:UIActionSheetButtonTypeCancel
+                             action:^{
+							    // Don't replace, mark as cancel
+					         }];
+
 LICENSE
 -------
 
