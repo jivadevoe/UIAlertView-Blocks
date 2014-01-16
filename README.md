@@ -75,6 +75,16 @@ That's it!
 
 The UIActionSheet category works virtually the same as the UIAlertView.  Just check out the header for the initializer you need to use.  It's very straightforward.
 
+FIND THIS USEFUL?
+-----------------
+
+Why don't you buy me a beer with bitcoin?
+
+My wallet address is: 1JtjkQFmJmbMumWquh5J2fuRuD6LkWr5QL
+
+![Wallet QR Code](http://www.random-ideas.net/qrcode.png)
+
+
 LICENSE
 -------
 
