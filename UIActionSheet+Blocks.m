@@ -57,14 +57,18 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
     return self;
 }
 
-- (NSInteger)addButtonItem:(RIButtonItem *)item
-{	
-    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);	
+- (BOOL)addButtonItem:(RIButtonItem *)item
+{
+    if (nil == item) {
+        return NO;
+    }
+    
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
 	
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
 	[buttonsArray addObject:item];
 	
-	return buttonIndex;
+	return (buttonIndex >= 0);
 }
 
 - (void)setDismissalAction:(void(^)())dismissalAction
