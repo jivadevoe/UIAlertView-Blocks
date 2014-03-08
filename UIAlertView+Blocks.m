@@ -47,10 +47,10 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
     return self;
 }
 
-- (BOOL)addButtonItem:(RIButtonItem *)item
+- (NSInteger)addButtonItem:(RIButtonItem *)item
 {
     if (nil == item) {
-        return NO;
+        return -1;
     }
     
     NSMutableArray *buttonsArray = objc_getAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY);
@@ -58,7 +58,7 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 	NSInteger buttonIndex = [self addButtonWithTitle:item.label];
 	[buttonsArray addObject:item];
 	
-	return (buttonIndex >= 0);
+	return buttonIndex;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

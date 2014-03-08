@@ -13,6 +13,6 @@
 
 -(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ... NS_REQUIRES_NIL_TERMINATION;
 
-- (BOOL)addButtonItem:(RIButtonItem *)item;
+- (NSInteger)addButtonItem:(RIButtonItem *)item;
 
 @end
