@@ -13,7 +13,7 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 
 @implementation UIAlertView (Blocks)
 
--(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ...
+-(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ... 
 {
     if((self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.label otherButtonTitles:nil]))
     {
@@ -21,16 +21,16 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
         
         RIButtonItem *eachItem;
         va_list argumentList;
-        if (inOtherButtonItems)
-        {
+        if (inOtherButtonItems)                     
+        {                                  
             [buttonsArray addObject: inOtherButtonItems];
-            va_start(argumentList, inOtherButtonItems);
-            while((eachItem = va_arg(argumentList, RIButtonItem *)))
+            va_start(argumentList, inOtherButtonItems);       
+            while((eachItem = va_arg(argumentList, RIButtonItem *))) 
             {
-                [buttonsArray addObject: eachItem];
+                [buttonsArray addObject: eachItem];            
             }
             va_end(argumentList);
-        }
+        }    
         
         for(RIButtonItem *item in buttonsArray)
         {
