@@ -19,41 +19,44 @@ static NSString *RI_DISMISSAL_ACTION_KEY = @"com.random-ideas.DISMISSAL_ACTION";
     if((self = [self initWithTitle:inTitle delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil]))
     {
         NSMutableArray *buttonsArray = [NSMutableArray array];
-        
+        NSMutableArray *otherButtons = [NSMutableArray array];
+
         RIButtonItem *eachItem;
         va_list argumentList;
         if (inOtherButtonItems)
         {
-            [buttonsArray addObject: inOtherButtonItems];
+            [otherButtons addObject:inOtherButtonItems];
             va_start(argumentList, inOtherButtonItems);
             while((eachItem = va_arg(argumentList, RIButtonItem *)))
             {
-                [buttonsArray addObject: eachItem];
+                [otherButtons addObject:eachItem];
             }
             va_end(argumentList);
         }
-        
-        for(RIButtonItem *item in buttonsArray)
-        {
-            [self addButtonWithTitle:item.label];
-        }
-        
+
         if(inDestructiveItem)
         {
             [buttonsArray addObject:inDestructiveItem];
             NSInteger destIndex = [self addButtonWithTitle:inDestructiveItem.label];
             [self setDestructiveButtonIndex:destIndex];
         }
+
+        for(RIButtonItem *item in otherButtons)
+        {
+            [buttonsArray addObject:item];
+            [self addButtonWithTitle:item.label];
+        }
+
         if(inCancelButtonItem)
         {
             [buttonsArray addObject:inCancelButtonItem];
             NSInteger cancelIndex = [self addButtonWithTitle:inCancelButtonItem.label];
             [self setCancelButtonIndex:cancelIndex];
         }
-        
+
         objc_setAssociatedObject(self, (__bridge const void *)RI_BUTTON_ASS_KEY, buttonsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        
     }
+
     return self;
 }
 
