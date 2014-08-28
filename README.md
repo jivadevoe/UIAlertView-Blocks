@@ -1,7 +1,7 @@
 README
 ======
 
-This is a quickie pair of categories on UIAlertView and UIActionSheet which enables you to use blocks to handle the button selection instead of implementing a delegate.
+This is a quickie set of categories on UIAlertView, UIActionSheet, and UIBarButtonItem which enables you to use blocks to handle the button selection instead of implementing a delegate.
 
 HOW IT WORKS
 ------------
@@ -74,6 +74,11 @@ This is useful if building an UIAlertView, or UIActionSheet dynamically from an 
 That's it!
 
 The UIActionSheet category works virtually the same as the UIAlertView.  Just check out the header for the initializer you need to use.  It's very straightforward.
+
+The UIBarButtonItem category adds a new initializer taking an RIButtonItem:
+
+    [[UIBarButtonItem alloc] initWithStyle:UIBarButtonItemStyleBordered
+                                      item:buttonItem];
 
 FIND THIS USEFUL?
 -----------------
