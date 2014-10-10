@@ -84,4 +84,14 @@ static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
     return buttonItems;
 }
 
+- (void)willPresentAlertView:(UIAlertView *)alertView
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AlertViewPresented" object:self.superview];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AlertViewDismissed" object:self];
+}
+
 @end
