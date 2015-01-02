@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         =  'UIAlertView-Blocks'
+  s.name         =  'UIAlertView-ButtonItemBlocks'
   s.version      =  '1.0'
   s.platform     =  :ios
   s.author       =  'Jiva Devoe'
