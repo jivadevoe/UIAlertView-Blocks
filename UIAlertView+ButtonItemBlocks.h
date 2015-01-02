@@ -1,5 +1,5 @@
 //
-//  UIAlertView+Blocks.h
+//  UIAlertView+ButtonItemBlocks.h
 //  Shibui
 //
 //  Created by Jiva DeVoe on 12/28/10.

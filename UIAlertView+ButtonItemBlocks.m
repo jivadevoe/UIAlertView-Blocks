@@ -1,12 +1,12 @@
 //
-//  UIAlertView+Blocks.m
+//  UIAlertView+ButtonItemBlocks.m
 //  Shibui
 //
 //  Created by Jiva DeVoe on 12/28/10.
 //  Copyright 2010 Random Ideas, LLC. All rights reserved.
 //
 
-#import "UIAlertView-Blocks/UIAlertView+ButtonItemBlocks.h"
+#import "UIAlertView-ButtonItemBlocks/UIAlertView+ButtonItemBlocks.h"
 #import <objc/runtime.h>
 
 static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
