@@ -1,5 +1,5 @@
 //
-//  UIAlertView+Blocks.h
+//  UIAlertView+ButtonItemBlocks.h
 //  Shibui
 //
 //  Created by Jiva DeVoe on 12/28/10.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RIButtonItem.h"
 
-@interface UIAlertView (Blocks)
+@interface UIAlertView (ButtonItemBlocks)
 
 -(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ... NS_REQUIRES_NIL_TERMINATION;
 
