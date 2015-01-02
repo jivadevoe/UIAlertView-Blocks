@@ -6,12 +6,12 @@
 //  Copyright 2010 Random Ideas, LLC. All rights reserved.
 //
 
-#import "UIAlertView-Blocks/UIAlertView+Blocks.h"
+#import "UIAlertView-Blocks/UIAlertView+ButtonItemBlocks.h"
 #import <objc/runtime.h>
 
 static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
 
-@implementation UIAlertView (Blocks)
+@implementation UIAlertView (ButtonItemBlocks)
 
 - (id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ...
 {
