@@ -6,7 +6,7 @@
 //  Copyright 2010 Random Ideas, LLC. All rights reserved.
 //
 
-#import "UIAlertView-ButtonItemBlocks/UIAlertView+ButtonItemBlocks.h"
+#import "UIAlertView+ButtonItemBlocks.h"
 #import <objc/runtime.h>
 
 

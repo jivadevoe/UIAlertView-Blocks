@@ -6,7 +6,7 @@
 //  Copyright 2011 Random Ideas, LLC. All rights reserved.
 //
 
-#import "UIAlertView-ButtonItemBlocks/UIActionSheet+ButtonItemBlocks.h"
+#import "UIActionSheet+ButtonItemBlocks.h"
 #import <objc/runtime.h>
 
 static NSString *RI_BUTTON_ASS_KEY = @"com.random-ideas.BUTTONS";
