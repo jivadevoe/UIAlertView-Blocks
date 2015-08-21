@@ -12,19 +12,19 @@
 @synthesize label;
 @synthesize action;
 
-+(id)item
++(instancetype)item
 {
     return [self new];
 }
 
-+(id)itemWithLabel:(NSString *)inLabel
++(instancetype)itemWithLabel:(NSString *)inLabel
 {
     RIButtonItem *newItem = [self item];
     [newItem setLabel:inLabel];
     return newItem;
 }
 
-+(id)itemWithLabel:(NSString *)inLabel action:(void(^)(void))action
++(instancetype)itemWithLabel:(NSString *)inLabel action:(void(^)(void))action
 {
   RIButtonItem *newItem = [self itemWithLabel:inLabel];
   [newItem setAction:action];
