@@ -15,8 +15,8 @@
 }
 @property (retain, nonatomic) NSString *label;
 @property (copy, nonatomic) void (^action)();
-+(id)item;
-+(id)itemWithLabel:(NSString *)inLabel;
-+(id)itemWithLabel:(NSString *)inLabel action:(void(^)(void))action;
++(instancetype)item;
++(instancetype)itemWithLabel:(NSString *)inLabel;
++(instancetype)itemWithLabel:(NSString *)inLabel action:(void(^)(void))action;
 @end
 
